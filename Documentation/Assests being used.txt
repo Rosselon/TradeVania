@@ -1,0 +1,10 @@
+Packages being used
+ - mirror - simplified multiplayer
+ - parrelsync - creates duplicate project for efficient testing of networking
+
+Art design 
+- MagicaVoxel
+
+Decisions made 
+- changed from onPointerClick to onPointerDown so as onPointerClick was not working frequently
+ 
