@@ -1,0 +1,10 @@
+- A client callback is used on the update function to prevent the server from attempting to call it (client callback is used rather than just the client tag to prevent errors).
+
+- This file cleverly incorporates raycasting to decide where to spawn the attacker
+- Firstly the game checks whether the left mouse button has been clicked to determine whether it should create a ray.
+- Then once this has occured the ray is created using the main camera.
+- The ScreenPoint to ray function is a function in the camera class that takes a 2D vector and creates a ray from the camera through that point.
+- This means that the ray will correspond appropriately to where user clicks.
+- The ray is then checked to see if it hits anything and if it has will assign the "hit" variable. 
+- This "hit" variable can then be used for a multitude of purposes but in this case will just be used decide if the player has clicked 
+	within range of their base and will be fed into the CmdSpawnAttacker function as the location the attacker should instantiate.

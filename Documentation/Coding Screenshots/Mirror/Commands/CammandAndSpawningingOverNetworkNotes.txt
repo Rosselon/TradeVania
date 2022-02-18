@@ -1,0 +1,11 @@
+- A command is a part of in built mirror functionality that allows you to call a server method from on the client.
+- The client will usually do processing on its side then validation on the server by calling a command function.
+
+- This command is used to instantiate an object on the server using Unitys in built instantiate function.
+- Mirror is then used to "Spawn" the objects on all clients so they are viewable by all players.
+
+
+
+
+
+

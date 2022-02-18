@@ -314,6 +314,10 @@ PrefabInstance:
       propertyPath: offlineScene
       value: Assets/Scenes/MenuScene.unity
       objectReference: {fileID: 0}
+    - target: {fileID: 2525581696445055074, guid: 881a367fc032175439a8bd0df3cf99e3, type: 3}
+      propertyPath: maxConnections
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6573987188367652898, guid: 881a367fc032175439a8bd0df3cf99e3, type: 3}
       propertyPath: m_Name
       value: Network Manager
