@@ -306,18 +306,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2525581696445055074, guid: 881a367fc032175439a8bd0df3cf99e3, type: 3}
-      propertyPath: onlineScene
-      value: Assets/Scenes/MapScene.unity
-      objectReference: {fileID: 0}
-    - target: {fileID: 2525581696445055074, guid: 881a367fc032175439a8bd0df3cf99e3, type: 3}
-      propertyPath: offlineScene
-      value: Assets/Scenes/MenuScene.unity
-      objectReference: {fileID: 0}
-    - target: {fileID: 2525581696445055074, guid: 881a367fc032175439a8bd0df3cf99e3, type: 3}
-      propertyPath: maxConnections
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 6573987188367652898, guid: 881a367fc032175439a8bd0df3cf99e3, type: 3}
       propertyPath: m_Name
       value: Network Manager
@@ -366,7 +354,5 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 6573987188367652899, guid: 881a367fc032175439a8bd0df3cf99e3, type: 3}
-    - {fileID: 6573987188367652897, guid: 881a367fc032175439a8bd0df3cf99e3, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 881a367fc032175439a8bd0df3cf99e3, type: 3}

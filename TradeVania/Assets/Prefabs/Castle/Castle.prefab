@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2164302788478426461}
   - component: {fileID: 3981902905103151416}
   m_Layer: 0
-  m_Name: Player
+  m_Name: Castle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -64,7 +64,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 64
   AttackerPrefab: {fileID: 7269183636580722254, guid: be59fac661087ea46b04c560e852dc44, type: 3}
+  spawnDistance: 7.5
 --- !u!1001 &2553868519278332145
 PrefabInstance:
   m_ObjectHideFlags: 0
