@@ -14,6 +14,12 @@ public class Targetting : NetworkBehaviour
     // Game object being targeted
     [SerializeField] private GameObject target = null;
 
+    // Returns the current target to any script that requests it
+    public GameObject GetTarget()
+    {
+        return target;
+    }
+
     #region Server
     public override void OnStartServer()
     {
@@ -28,7 +34,12 @@ public class Targetting : NetworkBehaviour
     
     [ServerCallback]
     private void OnTriggerEnter(Collider hit)
-    {
+    {   
+        // All conditions to leave this function
+        #region Leave Conditions
+        // Don't interact if already have a target
+        if(target != null){return;}
+
         // Don't interact with the floor
         if (hit.gameObject.name == "Ground"){return;}
 
@@ -36,11 +47,13 @@ public class Targetting : NetworkBehaviour
         if(hit.gameObject.GetComponent<NetworkIdentity>().connectionToClient.connectionId == 
             gameObject.GetComponent<NetworkIdentity>().connectionToClient.connectionId) {return;}
 
+        #endregion
+
         // Set the target to be the object you collided with
         target = hit.gameObject;
 
-        // Disable the movement script
-        gameObject.GetComponent<Movement>().enabled = false;
+        // Change movement to follow target
+        gameObject.GetComponent<Movement>().SetMoveForward(false);
     }
     #endregion
 

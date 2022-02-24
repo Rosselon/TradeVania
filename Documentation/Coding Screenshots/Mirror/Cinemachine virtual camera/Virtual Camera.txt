@@ -1,0 +1,4 @@
+cinemachine virtual camera 
+ - create a virtual camera in the scene that connects to a main camera
+ - only one camera so minimises rendering issues 
+ - allows for separate clients to have different camera POVs

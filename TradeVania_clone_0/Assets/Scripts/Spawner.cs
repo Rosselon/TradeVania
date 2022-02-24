@@ -35,8 +35,6 @@ public class Spawner : NetworkBehaviour
                                                   Spawnpos,   // Get the position of the spawn location transform
                                                   spawnRotation);  // Get the rotation
 
-        Debug.Log($"Conncetion id {connectionToClient.connectionId}");
-
         // Spawn the GameObject for all clients (make sure is in instantiatable prefabs)
         NetworkServer.Spawn(AttackerInstance,       // Use the above spawned attacker
                             connectionToClient      // Assign this to the owner of the game object this script is attached to
