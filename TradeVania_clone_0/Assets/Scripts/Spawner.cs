@@ -5,9 +5,8 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class Spawner : NetworkBehaviour
-{
-
-    // Set up a layer mask for what you can spawn on
+{   
+   // Set up a layer mask for what you can spawn on
     [SerializeField] private LayerMask layerMask = new LayerMask();
 
     // Get the prefab for the unit you want to spawn
@@ -23,6 +22,9 @@ public class Spawner : NetworkBehaviour
 
     // Region for the code called on the server
     #region Server
+
+    // Run on server when this object is created
+ 
 
     // Command on the server to spawn an attacker
     [Command] private void CmdSpawnAttacker(Vector3 Spawnpos)

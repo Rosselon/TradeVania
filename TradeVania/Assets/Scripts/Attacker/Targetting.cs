@@ -47,8 +47,6 @@ public class Targetting : NetworkBehaviour
         // Don't interact with the floor
         if (hit.gameObject.layer != LayerMask.NameToLayer("Targettable")){return;}
 
-        Debug.Log($"First networkID {hit.GetComponent<NetworkIdentity>().connectionToClient.connectionId}, Second networkID {GetComponent<NetworkIdentity>().connectionToClient.connectionId}");
-
         // Don't interact with objects also owned by you
         if(hit.gameObject.GetComponent<NetworkIdentity>().connectionToClient.connectionId == 
             gameObject.GetComponent<NetworkIdentity>().connectionToClient.connectionId) {return;}
