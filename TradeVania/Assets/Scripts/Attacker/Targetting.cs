@@ -19,6 +19,10 @@ public class Targetting : NetworkBehaviour
     {
         return target;
     }
+    public float GetTargetRange()
+    {
+        return targetRange;
+    }
 
     #region Server
     public override void OnStartServer()
@@ -41,7 +45,9 @@ public class Targetting : NetworkBehaviour
         if(target != null){return;}
 
         // Don't interact with the floor
-        if (hit.gameObject.name == "Ground"){return;}
+        if (hit.gameObject.layer != LayerMask.NameToLayer("Targettable")){return;}
+
+        Debug.Log($"First networkID {hit.GetComponent<NetworkIdentity>().connectionToClient.connectionId}, Second networkID {GetComponent<NetworkIdentity>().connectionToClient.connectionId}");
 
         // Don't interact with objects also owned by you
         if(hit.gameObject.GetComponent<NetworkIdentity>().connectionToClient.connectionId == 

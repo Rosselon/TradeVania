@@ -9,8 +9,11 @@ public class Movement : NetworkBehaviour
 
     // The agent for this object
     private NavMeshAgent navAgent = null;
+
+    private Targetting targetting;
+
+    // Variables
     private bool moveForward = true;
-    
     private Quaternion startingRotation;
 
     public void SetMoveForward(bool option)
@@ -22,8 +25,13 @@ public class Movement : NetworkBehaviour
 
     public override void OnStartServer()
     {
+        // Get this objects targetting script
+        targetting = this.GetComponent<Targetting>();
+
         // Assign the navAgent to be the one attached to this script bearing object
         navAgent = this.GetComponent<NavMeshAgent>();
+        navAgent.speed = moveSpeed;
+        navAgent.stoppingDistance = targetting.GetTargetRange() - 0.2f;
 
         // Get the starting rotation of the object
         startingRotation = this.gameObject.transform.rotation;
