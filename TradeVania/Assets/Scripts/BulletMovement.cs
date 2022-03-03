@@ -62,7 +62,7 @@ public class BulletMovement : NetworkBehaviour
         }
         else 
         {
-            // If the bullet doesn't have a target delete itself
+            // If the bullet doesn't have a target delete itself Ross'
             SelfDestruct();
         }
     }

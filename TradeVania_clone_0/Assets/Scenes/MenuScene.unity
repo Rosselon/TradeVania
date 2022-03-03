@@ -3923,3 +3923,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pendingPage: {fileID: 1211314545}
   startButton: {fileID: 1982934760}
+  textArray:
+  - {fileID: 118484970}
+  - {fileID: 1416983954}

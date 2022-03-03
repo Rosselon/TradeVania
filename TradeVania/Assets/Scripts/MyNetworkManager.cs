@@ -60,6 +60,9 @@ public class MyNetworkManager : NetworkManager
             foreach(MyPlayer player in Players)
             {
                 Transform startpos = GetStartPosition();
+
+                player.transform.position = startpos.position;
+
                 Debug.Log($"Rotation {startpos.rotation}, Position {startpos.position}");
                 // Instantiate each player
                 // Set the orientation of the base so that it is facing the opposition
@@ -87,10 +90,10 @@ public class MyNetworkManager : NetworkManager
         // Add player to list of players
         Players.Add(player); 
 
+        // Create the player name from the players number
+        player.SetPlayerName($"Player {Players.Count}");
+
         // Set the players party ownership status if only one player is connected they are the owner
-        //if(MyNetworkManager.singleton.numPlayers == 1) player.SetOwnParty(true);
-        Debug.Log($"Player {conn.connectionId} party owner : {Players.Count == 1}");
-        Debug.Log($"Num Players = {MyNetworkManager.singleton.numPlayers}, Players list size = {Players.Count}");
         player.SetOwnParty(Players.Count == 1);
     }
     public override void OnServerDisconnect(NetworkConnection conn)
