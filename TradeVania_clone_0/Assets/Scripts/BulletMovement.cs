@@ -60,6 +60,11 @@ public class BulletMovement : NetworkBehaviour
             // Move the bullet towards the target
             transform.position = Vector3.MoveTowards(transform.position, target.transform.position, shotSpeed);
         }
+        else 
+        {
+            // If the bullet doesn't have a target delete itself
+            SelfDestruct();
+        }
     }
     [Server] private void SelfDestruct()
     {
