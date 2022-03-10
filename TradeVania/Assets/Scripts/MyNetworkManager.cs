@@ -53,7 +53,6 @@ public class MyNetworkManager : NetworkManager
 
     public override void OnServerSceneChanged(string newSceneName)
     {
-        Debug.Log($"active scene: {newSceneName}, play scene: {PLAYSCENE}");
         // If we change do the map scene do this
         if(newSceneName == PLAYSCENE)
         {
@@ -61,21 +60,22 @@ public class MyNetworkManager : NetworkManager
             {
                 Transform startpos = GetStartPosition();
 
-                player.transform.position = startpos.position;
-
-                Debug.Log($"Rotation {startpos.rotation}, Position {startpos.position}");
-                // Instantiate each player
+                // Instantiate each players castle
                 // Set the orientation of the base so that it is facing the opposition
-                Quaternion orientation = player.connectionToClient.connectionId == 0 ? startpos.rotation : Quaternion.Euler(0, 180, 0);
+                Quaternion orientation = player.connectionToClient.connectionId == 0 ? Quaternion.Euler(0, 180, 0) : Quaternion.identity;
 
                 // Create the base on the server when the player is added
                 GameObject baseInstance = Instantiate(basePrefab,
                                                     startpos.position,   // Use the location and roatation of the player
                                                     orientation);
-                
+                Debug.Log($"Player: {player.connectionToClient.connectionId}, Rotation {orientation}, Position {startpos.position}");
                 // Spawn the GameObject for all clients 
                 NetworkServer.Spawn(baseInstance,       
                                     player.connectionToClient);          // Assign ownership to the player that was spawned
+                
+                player.transform.position = startpos.position;
+                
+                
             }           
         }
     }

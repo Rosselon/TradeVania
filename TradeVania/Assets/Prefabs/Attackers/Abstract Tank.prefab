@@ -218,7 +218,7 @@ GameObject:
   - component: {fileID: 3517795442392241264}
   - component: {fileID: -8495103704073476876}
   m_Layer: 7
-  m_Name: Tank
+  m_Name: Abstract Tank
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -496,6 +496,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
+  gameOverScreen: {fileID: 0}
 --- !u!1 &8228217373459379635
 GameObject:
   m_ObjectHideFlags: 0

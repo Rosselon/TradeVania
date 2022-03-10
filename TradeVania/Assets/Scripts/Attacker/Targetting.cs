@@ -46,6 +46,9 @@ public class Targetting : NetworkBehaviour
 
         // Don't interact with the floor
         if (hit.gameObject.layer != LayerMask.NameToLayer("Targettable")){return;}
+        
+        // Only interact with cube colliders
+        if (hit.GetType() != typeof(BoxCollider)){return;}
 
         // Don't interact with objects also owned by you
         if(hit.gameObject.GetComponent<NetworkIdentity>().connectionToClient.connectionId == 

@@ -1,0 +1,3 @@
+using custom binary files to save data
+- go through the brackeys video and talk abouth player prefs etc
+- a paid service would be better but on a budjet this is the best option
