@@ -7,9 +7,11 @@ using UnityEngine.SceneManagement;
 
 public class MyNetworkManager : NetworkManager
 {
-
     // Scene names
     private string PLAYSCENE = "MapScene";
+    private string TRADINGSCENE = "TradingScene";
+
+    private string sceneToLoad;
 
     // Set up the base prefab
     [SerializeField] private GameObject basePrefab = null;
@@ -23,6 +25,15 @@ public class MyNetworkManager : NetworkManager
     // Client connections actions
     public static event Action ClientConnects;
     public static event Action ClientRejected;
+
+    public void SetPlayScene()
+    {
+        sceneToLoad = PLAYSCENE;
+    }
+    public void SetTradingScene()
+    {
+        sceneToLoad = TRADINGSCENE;
+    }
 
     #region Server
 
@@ -47,7 +58,7 @@ public class MyNetworkManager : NetworkManager
             gameStarted = true;
 
             // Change to the starting scene
-            ServerChangeScene(PLAYSCENE);
+            ServerChangeScene(sceneToLoad);
         }
     }
 
@@ -73,10 +84,12 @@ public class MyNetworkManager : NetworkManager
                 NetworkServer.Spawn(baseInstance,       
                                     player.connectionToClient);          // Assign ownership to the player that was spawned
                 
-                player.transform.position = startpos.position;
-                
-                
+                player.transform.position = startpos.position;                
             }           
+        }
+        else if (newSceneName == TRADINGSCENE)
+        {
+            Debug.Log("Entered Trading Scene");
         }
     }
 

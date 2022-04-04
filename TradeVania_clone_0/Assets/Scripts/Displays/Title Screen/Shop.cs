@@ -5,11 +5,19 @@ using UnityEngine;
 
 public class Shop : MonoBehaviour
 {
+
+    private Stats stats;
+
     [SerializeField] private TMP_Text bankText;
 
-    public void UpdateBank(int newBalance)
+    private void Start()
+    {
+        stats = GameObject.FindObjectOfType<Stats>();
+    }
+
+    public void UpdateBank()
     {
         // Set the coin text to be the stored amount of coins
-        bankText.text = newBalance.ToString();
+        bankText.text = stats.TVCoins.ToString();
     }
 }

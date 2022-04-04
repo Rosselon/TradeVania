@@ -13,21 +13,46 @@ public class Stats : MonoBehaviour
     [SerializeField] public int numBrute;
     public PlayerStats ps;
 
+    public static Stats stats;
+
     private Shop shop;
+ 
+    void Awake()
+    {
+        // Singleton system (so there is only ever one stats system)
+        if(stats == null)
+        {
+           stats = this;
+           DontDestroyOnLoad(gameObject);
+        }
+        else if(stats != this)
+        {
+           Destroy(gameObject);
+        }
+        // Subscribe to gameover event to add money
+        Death.GameOverEvent += GameOverAddMoney;
+    }
+
+    void OnDestroy()
+    {
+        Death.GameOverEvent -= GameOverAddMoney;
+    }
+
+    private void GameOverAddMoney(string name)
+    {
+        TVCoins += 100;
+    }
 
     private void Start()
-    {
-        DontDestroyOnLoad(this);
-        
+    {        
         // Set the shop variable
         shop = GameObject.FindObjectOfType<Shop>();
         
         // Initial load
         Load();
 
-        
-
-        shop.UpdateBank(TVCoins);
+        // Update the banks
+        shop.UpdateBank();
     }
 
     public void Save()
@@ -71,7 +96,7 @@ public class Stats : MonoBehaviour
                 break;
         }
         // Update the bank details
-        shop.UpdateBank(TVCoins);
+        shop.UpdateBank();
         Save();
         Load();
     }
