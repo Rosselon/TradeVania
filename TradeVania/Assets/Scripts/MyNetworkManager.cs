@@ -84,7 +84,8 @@ public class MyNetworkManager : NetworkManager
                 NetworkServer.Spawn(baseInstance,       
                                     player.connectionToClient);          // Assign ownership to the player that was spawned
                 
-                player.transform.position = startpos.position;                
+                player.transform.position = startpos.position;
+                player.SetPosition(startpos.position);                 
             }           
         }
         else if (newSceneName == TRADINGSCENE)

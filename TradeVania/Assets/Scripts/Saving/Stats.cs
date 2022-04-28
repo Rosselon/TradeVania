@@ -81,16 +81,19 @@ public class Stats : MonoBehaviour
                 if (TVCoins < BasicTroop.cost){return;}
                 TVCoins -= BasicTroop.cost;
                 numBasic += 1;
+                shop.UpdateBasic();
                 break;
             case 1:
                 if (TVCoins < SniperTroop.cost){return;}
                 TVCoins -= SniperTroop.cost;
                 numSniper += 1;
+                shop.UpdateSniper();
                 break;
             case 2:
                 if (TVCoins < BruteTroop.cost){return;}
                 TVCoins -= BruteTroop.cost;
                 numBrute += 1;
+                shop.UpdateBrute();
                 break;
             default:
                 break;

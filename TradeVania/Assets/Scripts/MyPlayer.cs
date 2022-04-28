@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class MyPlayer : NetworkBehaviour
 {
+
     // Track if this player is the party owner (to decide if they have access to the start game button)
     [SyncVar(hook = nameof(PartyOwnershipUpdate))] private bool ownParty = false;
 
@@ -16,6 +17,8 @@ public class MyPlayer : NetworkBehaviour
     // Ownership updated event
     public static event Action<bool> PartyOwnershipUpdated;
     public static event Action PlayerNameUpdated;
+
+    [SyncVar] private Vector3 position = new Vector3(0,0,0);
 
     #region Server Code
 
@@ -44,6 +47,10 @@ public class MyPlayer : NetworkBehaviour
     {
         playerName = name;
     }
+    [Server] public void SetPosition(Vector3 pos)
+    {
+        position = pos;
+    }
         #endregion
 
     [Command] public void CmdStartGame()
@@ -65,6 +72,15 @@ public class MyPlayer : NetworkBehaviour
 
     #region Client Code
 
+    public void Update()
+    {   
+        if(gameObject.transform.position == position) {return;}
+        Debug.Log("Late Move");
+       
+        gameObject.transform.position = position;
+        Debug.Log($"Late Move new Position {gameObject.transform.position}");
+    }
+
     public override void OnStartClient()
     {
         if(NetworkServer.active) {return;}
@@ -72,7 +88,13 @@ public class MyPlayer : NetworkBehaviour
         // Prevents the player from being deleted when loading new screen (for client)
         DontDestroyOnLoad(gameObject);
 
+        
+
         ((MyNetworkManager)NetworkManager.singleton).Players.Add(this);
+        
+        if(gameObject.transform.position == position) {return;}
+        Debug.Log("Late Move");
+        gameObject.transform.position = position;
     }
 
     public override void OnStopClient()
